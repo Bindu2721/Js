@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      width: 90%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      font-size: 1.4em;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #error {
+      font-size: 1.2em;
+      margin-top: 15px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Grade Calculator</h2>
+    <input type="number" id="score" placeholder="Enter your score (0-100)">
+    <button onclick="calculateGrade()">Get Grade</button>
+    <p id="result"></p>
+    <p id="error"></p>
+  </div>
+
+  <script>
+    function calculateGrade() {
+      let score = document.querySelector("#score").value;
+      let resultEl = document.querySelector("#result");
+      let errorEl = document.querySelector("#error");
+
+      
+      resultEl.innerHTML = "";
+      errorEl.innerHTML = "";
+      resultEl.style.color = "black"; 
+
+     
+      if (score === "" || score < 0 || score > 100) {
+        errorEl.innerHTML = "Please enter a valid score between 0 and 100.";
+        resultEl.innerHTML = ""; 
+        return;
+      }
+
+      let grade;
+      if (score >= 90) {
+        grade = "A";
+        resultEl.style.color = "green";
+      } else if (score >= 80) {
+        grade = "B";
+        resultEl.style.color = "blue";
+      } else if (score >= 70) {
+        grade = "C";
+        resultEl.style.color = "#E98D03";
+      } else if (score >= 60) {
+        grade = "D";
+        resultEl.style.color = "#F7E394";
+      } else {
+        grade = "F";
+        resultEl.style.color = "red";
+      }
+
+      resultEl.innerHTML = " Your Grade: " + grade;
+    }
+  </script>
+</body>
+</html>
+
